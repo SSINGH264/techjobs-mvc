@@ -39,11 +39,35 @@
     <!-- TODO #2 - Loop over jobs map to display all job fields -->
     <div class="container body-content">
         <h2>Results</h2>
-        <ul>
-            <li th:each="job : ${jobs}">
-                <a th:text="${job.name}"></a>
-            </li>
-        </ul>
+
+        <table th:each="job : ${jobs}" class="job-listing">
+            <tr>
+                <th>Name</th>
+                <td th:text="${job.name}"></td>
+            </tr>
+            <tr>
+                <th>Employer</th>
+                <td th:text="${job.employer}"></td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td th:text="${job.location}"></td>
+            </tr>
+            <tr>
+                <th>Position type</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Core competency</th>
+                <td></td>
+            </tr>
+
+        </table>
+
+        <!--                <td th:text="${job.position type}"></td>-->
+<!--                <td th:text="${job.core competency}"></td>-->
+
+
     </div>
 </div>
 
