@@ -19,10 +19,10 @@ public class ListController {
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public ListController () {
-        columnChoices.put("core competency", "Skill");
+        columnChoices.put("coreCompetency", "Skill");
         columnChoices.put("employer", "Employer");
         columnChoices.put("location", "Location");
-        columnChoices.put("position type", "Position Type");
+        columnChoices.put("positionType", "Position Type");
         columnChoices.put("all", "All");
     }
 
@@ -41,6 +41,7 @@ public class ListController {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
             model.addAttribute("jobs", jobs);
+            model.addAttribute("numResults", jobs.size());
             return "list-jobs";
         } else {
             ArrayList<String> items = JobData.findAll(column);
@@ -59,6 +60,7 @@ public class ListController {
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         model.addAttribute("jobs", jobs);
+        model.addAttribute("numResults", jobs.size());
 
         return "list-jobs";
     }
